@@ -24,6 +24,13 @@
         <span class = "tag">{{ tag.caption }}</span>
       {% endfor %}
     </div>
+    <div id="read-later">
+      {% csrf_token %}
+      <form action="{% url 'read-later' %}" method="post">
+        <input type="hidden" name="" value="{{ post.id }}" name="post_id">
+        <button>Read Later</button>
+      </form>
+    </div>
     <article>
       <img src="{{ post.image.url }}" alt="{{ post.title }}">
       <address>By <a href="mailto:{{ post.author.email_address }}">{{ post.author }}</a></address>
@@ -49,7 +56,7 @@
       </ul>
     </section>
   {% endif %}
-  
+
   <section id="comment-form">
     <h2>Your Comment</h2>
     <form action="{% url 'post-detail-page' post.slug %}" method="post">

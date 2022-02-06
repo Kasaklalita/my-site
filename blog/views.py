@@ -54,6 +54,10 @@ class SinglePostView(View):
         }
         return render(request, "blog/post-detail.html", context)
 
+class ReadLaterView(View):
+    def post(self, request):
+        pas
+
 def starting_page(request):
     latest_posts = Post.objects.all().order_by("-date")[:3]
     # sorted_posts = sorted(all_posts, key = get_date)
